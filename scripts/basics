@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e  # Exit immediately if a command exits with a non-zero status.
+set -x  # All executed commands are printed to the terminal
+
+aptitude update ; aptitude install -y nfs-kernel-server
+
+# Set default ports for rpc and nfs
+sed -i 's/STATDOPTS=/STATDOPTS="--port 32765 --outgoing-port 32766"/' /etc/default/nfs-common
+sed -i 's/RPCMOUNTDOPTS="/RPCMOUNTDOPTS="-p 32767 /' /etc/default/nfs-kernel-server
+
+# Add a default folder in /etc/exports file
+echo "/srv *(rw,all_squash,insecure,no_subtree_check)" >> /etc/exports
+
+apt-get -y autoremove ; aptitude -y autoclean ; apt-get -y autoclean
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.aptitude
