@@ -10,7 +10,7 @@ sed -i 's/STATDOPTS=/STATDOPTS="--port 32765 --outgoing-port 32766"/' /etc/defau
 sed -i 's/RPCMOUNTDOPTS="/RPCMOUNTDOPTS="-p 32767 /' /etc/default/nfs-kernel-server
 
 # Add a default folder in /etc/exports file
-echo "/srv *(rw,all_squash,insecure,no_subtree_check)" >> /etc/exports
+echo "/srv *(ro,all_squash,insecure,no_subtree_check)" >> /etc/exports
 
 apt-get -y autoremove ; aptitude -y autoclean ; apt-get -y autoclean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.aptitude
