@@ -1,4 +1,4 @@
-FROM ghcr.io/fernandoenzo/debian:11
+FROM ghcr.io/fernandoenzo/debian:12
 MAINTAINER Fernando Enzo Guarini (fernandoenzo@gmail.com)
 
 COPY scripts/basics /tmp
