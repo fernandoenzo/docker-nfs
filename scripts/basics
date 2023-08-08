@@ -3,6 +3,8 @@
 set -e  # Exit immediately if a command exits with a non-zero status.
 set -x  # All executed commands are printed to the terminal
 
+cp /tmp/scripts/boot /usr/local/boot
+
 aptitude update ; aptitude install -y nfs-kernel-server
 
 # Set default ports for rpc and nfs

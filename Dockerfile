@@ -1,9 +1,6 @@
 FROM ghcr.io/fernandoenzo/debian:12
-MAINTAINER Fernando Enzo Guarini (fernandoenzo@gmail.com)
 
-COPY scripts/basics /tmp
-RUN bash /tmp/basics
-
-COPY scripts/boot /usr/local/boot
+COPY scripts/ /tmp/scripts
+RUN bash /tmp/scripts/basics
 
 VOLUME ["/srv"]
